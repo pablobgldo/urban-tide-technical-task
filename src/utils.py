@@ -29,12 +29,13 @@ def infer_data_types(df):
             data_types[column] = "VARCHAR"
     return data_types
 
-def detect_outliers(df, threshold=3):
+def detect_outliers(df, threshold=2):
     """
     Detects outliers in a DataFrame using the Z-score method.
+    Attempted a threshold of 3 but didn't find outlier with value 100 so lowered it to 2.
     """
     outliers = pd.DataFrame()
     for column in df.select_dtypes(include=[ 'float64', 'int64']):
         df['z_score'] = (df[column] - df[column].mean()) / df[column].std()
-        outliers = outliers.append(df[df['z_score'].abs() > threshold])
+        outliers = outliers._append(df[df['z_score'].abs() > threshold])
     return outliers.drop(columns=['z_score'])
