@@ -29,7 +29,7 @@ def infer_data_types(df):
             data_types[column] = "VARCHAR"
     return data_types
 
-def detect_outliers(df, threshold=2):
+def detect_outliers(df, threshold=2.58):
     """
     Detects outliers in a DataFrame using the Z-score method.
     Attempted a threshold of 3 but didn't find outlier with value 100 so lowered it to 2.

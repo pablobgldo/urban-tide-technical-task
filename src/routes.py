@@ -15,8 +15,15 @@ def upload_csv():
 
     if file and file.filename.endswith('.csv'):
         df = process_csv(file)
-        data_types = infer_data_types(df)
-        print(detect_outliers(df))
+        outliers = detect_outliers(df)
+
+        if outliers.empty:
+            data_types = infer_data_types(df)
+            print('No outliers yay')
+        else:
+            print('Shit, we have outliers!')
+
+
         return jsonify({'message': 'File successfully uploaded'}), 200
     else:
         return jsonify({'error': 'Invalid file format'}), 400
