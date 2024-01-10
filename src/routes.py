@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from utils import process_csv
+from utils import process_csv, infer_data_types, detect_outliers
 
 app = Flask(__name__)
 
@@ -14,7 +14,17 @@ def upload_csv():
         return jsonify({'error': 'No selected file'}), 400
 
     if file and file.filename.endswith('.csv'):
-        print(process_csv(file))
+        df = process_csv(file)
+        outliers = detect_outliers(df)
+
+        if outliers.empty:
+            data_types = infer_data_types(df)
+            print('No outliers yay')
+        else:
+            print('Shit, we have outliers!')
+
+
         return jsonify({'message': 'File successfully uploaded'}), 200
     else:
         return jsonify({'error': 'Invalid file format'}), 400
+    
