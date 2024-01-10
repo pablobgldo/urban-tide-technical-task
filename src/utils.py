@@ -32,7 +32,7 @@ def infer_data_types(df):
 def detect_outliers(df, threshold=2.58):
     """
     Detects outliers in a DataFrame using the Z-score method.
-    Attempted a threshold of 3 but didn't find outlier with value 100 so lowered it to 2.
+    Attempted a threshold of 3 but didn't find outlier with value 100 so lowered it to 2.58.
     """
     outliers = pd.DataFrame()
     for column in df.select_dtypes(include=[ 'float64', 'int64']):
