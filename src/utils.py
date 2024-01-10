@@ -1,5 +1,4 @@
 import pandas as pd
-from scipy import stats
 
 def process_csv(file_path):
     """
@@ -17,17 +16,17 @@ def infer_data_types(df):
     """
     Infers SQL data types from a DataFrame.
     """
-    data_types = {}
+    dtypes = {}
     for column in df.columns:
         if pd.api.types.is_integer_dtype(df[column]):
-            data_types[column] = "INT"
+            dtypes[column] = "INT"
         elif pd.api.types.is_float_dtype(df[column]):
-            data_types[column] = "FLOAT"
+            dtypes[column] = "FLOAT"
         elif pd.api.types.is_datetime64_any_dtype(df[column]):
-            data_types[column] = "TIMESTAMP"
+            dtypes[column] = "TIMESTAMP"
         else:
-            data_types[column] = "VARCHAR"
-    return data_types
+            dtypes[column] = "VARCHAR"
+    return dtypes
 
 def detect_outliers(df, threshold=2.58):
     """

@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from utils import process_csv, infer_data_types, detect_outliers
+from db import get_conn, create_table, insert_data
 
 app = Flask(__name__)
 
@@ -15,13 +16,17 @@ def upload_csv():
 
     if file and file.filename.endswith('.csv'):
         df = process_csv(file)
+        dtypes = infer_data_types(df)
         outliers = detect_outliers(df)
-
+        del df['z_score']
+        
         if outliers.empty:
-            data_types = infer_data_types(df)
-            print('No outliers yay')
+            conn = get_conn()
+            create_table(conn, 'hello', dtypes)
+            insert_data(conn, 'hello', df)
+            print('No outliers yay. The data can now be inserted into your SQL container')
         else:
-            print('Shit, we have outliers!')
+            print('Shit, we have outliers! We cannot insert data into SQL container')
 
 
         return jsonify({'message': 'File successfully uploaded'}), 200
