@@ -21,12 +21,15 @@ def upload_csv():
         del df['z_score']
         
         if outliers.empty:
-            conn = get_conn()
-            create_table(conn, 'hello', dtypes)
-            insert_data(conn, 'hello', df)
-            print('No outliers yay. The data can now be inserted into your SQL container')
+            try:
+                conn = get_conn()
+                create_table(conn, 'hello', dtypes)
+                insert_data(conn, 'hello', df)
+                print('Data has now been inserted as there are no outliers')
+            except Exception as e:
+                print('Data could not be inserted despite lack of outliers: {e}')
         else:
-            print('Shit, we have outliers! We cannot insert data into SQL container')
+            print('We have detected outliers so data will not be inserted')
 
 
         return jsonify({'message': 'File successfully uploaded'}), 200

@@ -18,12 +18,11 @@ def create_table(conn, table_name, dtypes):
         conn.commit()
         cursor.close()
     except Exception as e:
-        print(f"Error creating table: {e}")
+        print(f"Error creating table {table_name}: {e}")
 
 def insert_data(conn, table_name, df):
     try:
         cursor = conn.cursor()
-
         columns = ', '.join(df.columns)
         placeholders = ', '.join(['%s'] * len(df.columns))
         query = f'INSERT INTO {table_name} ({columns}) VALUES ({placeholders})'
@@ -33,7 +32,7 @@ def insert_data(conn, table_name, df):
         conn.commit()
         cursor.close()
     except Exception as e:
-        print(f"Error inserting data into table: {e}")
+        print(f"Error inserting data into table {table_name}: {e}")
 
 def close_connection(conn):
     conn.close()
