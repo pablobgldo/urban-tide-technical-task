@@ -4,6 +4,7 @@ from db import get_conn, create_table, insert_data, close_conn
 
 app = Flask(__name__)
 
+
 @app.route('/upload-csv', methods=['POST'])
 def upload_csv():
     # Returns a 400 message if no file part in request.
@@ -17,13 +18,13 @@ def upload_csv():
         df = process_csv(file)
         # Infers SQL data types from DataFrame.
         dtypes = infer_data_types(df)
-        # Detects outliers in DataFrame using Z-score and adds Z-score column to Dataframe.
+        # Detects outliers using Z-score and adds Z-score column to DF.
         outliers = detect_outliers(df)
         # Removes Z-score column from Dataframe as it is no longer necessary.
         del df['z_score']
-        
+
         # Creates table (if it does not exist) and inserts data into it.
-        # Returns 200 if data is uploaded properly (no outliers) and 400 if outliers are found. 
+        # Returns 200 if data is uploaded and 400 if outliers are found.
         if outliers.empty:
             conn = get_conn()
             create_table(conn, 'test', dtypes)
@@ -31,9 +32,8 @@ def upload_csv():
             close_conn(conn)
             return jsonify({'Message': 'File successfully uploaded'}), 200
         else:
-            return jsonify({'Message': 'File could not be uploaded due to outliers'}), 400 
- 
+            return jsonify({'Message': 'File not uploaded - Outliers'}), 400
+
     else:
-        # Returns a 400 message if a file with a format other than .CSV is uploaded.
+        # Returns a 400 message if a file other than .CSV is uploaded.
         return jsonify({'Error': 'Invalid file format'}), 400
-    
