@@ -2,6 +2,10 @@ version: "3.11.1"
 services:
   postgres:
     image: postgres:16.0
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
   myapp:
@@ -10,3 +14,7 @@ services:
       - "5000:5000"
     depends_on:
       - postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust

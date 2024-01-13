@@ -1,13 +1,17 @@
 from pg8000 import Connection
-import getpass
+import os
 
 
 # Connects to default Postgres database 'postgres' using login name of user.
 # Uses default values for password, host and port number.
+
 def get_conn():
     return Connection(
+        host='postgres',
         database='postgres',
-        user=getpass.getuser())
+        user=os.getenv('POSTGRES_USER', 'postgres'),
+        password=os.getenv('POSTGRES_PASSWORD', 'postgres'))
+
 
 
 # Creates table if it does not exist with column names and types.
