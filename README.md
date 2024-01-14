@@ -4,10 +4,10 @@
 This application consumes, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files with a specific format (timestamp, value, category), infers the appropriate SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the the data passes the validation checks. The application is also dockerized for easy setup and deployment.
 
 ## Technologies Used
-* Python: Core language for the backend.  
-* Flask: Web framework for the API.  
-* PostgreSQL: SQL database for data storage.  
-* Docker: Containerisation of the application and database.  
+* **Python**: Core language for the backend.  
+* **Flask**: Web framework for the API.  
+* **PostgreSQL**: SQL database for data storage.  
+* **Docker**: Containerisation of the application and database.  
 
 ## Setup Instructions
 1. Clone this repository to your local machine.
@@ -16,6 +16,7 @@ This application consumes, validates and inserts data into a containerised SQL d
 ```bash
 docker-compose up --build
 ```
+4. **Important Note for macOS Users:** The application uses port 5000, which may conflict with AirPlay on macOS. If you encounter issues with the port being unavailable, you may need to deactivate AirPlay or change the port used by the application in the docker-compose.yml file.
 
 ## Using the application
 To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools such as Insomnia or Postman. If you decide to use Insomnia like I did, make sure you select the option 'Multipart' with 'file' as name and the CSV file as value. Alternatively, on Postman, under Body, make sure you select 'form-data' and create a new key named 'file' with the CSV file as value. You can test the application by using the test1.csv and test2.csv found in the Data folder. 
