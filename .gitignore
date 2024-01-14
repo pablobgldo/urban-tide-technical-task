@@ -1,4 +1,5 @@
 venv/
 src/__pycache__
+test/__pycache__
 example.sql
 example.txt
