@@ -12,12 +12,15 @@ Docker: Containerisation of the application and database.
 ## Setup Instructions
 1. Clone this repository to your local machine.
 2. Ensure that Docker is installed on your system.
-3. Build the containers by navigating into the project directory and running ```docker-compose up --build```.
+3. Build the containers by navigating into the project directory and running the following command:
+```bash
+docker-compose up --build
+```
 
 ## Using the application
-To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools like Insomnia or Postman. If you decide to use Insomnia like I did, make sure to use 'Multipart form' with an entry with 'file' as name and the CSV file as value. You can test the application by using the CSV files found in the Data folder. If you upload test2.csv, you should get an error message as the file contains an outlier value of 100. If you upload test1.csv, you should receive a 200 OK success message. If the file uploaded is not .CSV, you should get an error message saying 'Invalid file format'.
+To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools such as Insomnia or Postman. If you decide to use Insomnia like I did, make sure you select the option 'Multipart' with 'file' as name and the CSV file as value. Alternatively, on Postman, under Body, make sure you select 'form-data' and create a new key named 'file' with the CSV file as value. You can test the application by using the test1.csv and test2.csv found in the Data folder (test3.csv is primarily reserved for unit testing). 
 
-To verify that the data generated from test1.csv has been inserted properly, you can run the following commands:
+If you upload test1.csv, you should receive a 200 OK success message. If you upload test2.csv, you should get an error message since the file contains an outlier value of 100. Finally, if the file uploaded is not .CSV, you should receive an error message saying 'Invalid file format'. To verify that the data generated from test1.csv has been inserted properly, you can run the following commands:
 ```bash
 docker exec -it urban-tide-technical-task-postgres-1 bash
 ``` 
