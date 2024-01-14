@@ -15,7 +15,7 @@ Docker: Containerisation of the application and database.
 3. Build the containers by navigating into the project directory and running ```docker-compose up --build```.
 
 ## Using the application
-To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools like Postman or Insomnia. To verify that the data has been inserted into the containerised database, you can run ```docker exec -it [postgres_container_name] bash``` in the CLI. You can find more details on containers using ```docker ps```.
+To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools like Insomnia or Postman. If you decide to use Insomnia like I did, make sure to use 'Multipart form' with an entry named 'file' and the CSV file as value. To verify that the data has been inserted properly into the containerised database, you could first run ```docker exec -it urban-tide-technical-task-postgres-1 bash```, then connect to the containerised database using ```psql -U postgres``` and finally run ```SELECT * FROM test``` to display the contents of the table in which the data has been inserted.
 
 ## Functionality
 CSV Upload: Accepts CSV files with a specific format (timestamp, value, category).  
