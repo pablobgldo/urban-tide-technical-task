@@ -21,6 +21,20 @@ def test_upload_csv_invalid_file(client):
     assert response.json == {'Error': 'Invalid file format'}
 
 
+def test_upload_empty_csv(client):
+    data = {'file': (open('data/test4.csv', 'rb'), 'test4.csv')}
+    response = client.post('/upload-csv', data=data)
+    assert response.status_code == 400
+    assert response.json == {'Error': 'Empty CSV file'}
+
+
+def test_upload_missing_columns(client):
+    data = {'file': (open('data/test5.csv', 'rb'), 'test5.csv')}
+    response = client.post('/upload-csv', data=data)
+    assert response.status_code == 400
+    assert response.json == {'Error': 'Missing required columns'}
+
+
 def test_upload_csv_valid_file_with_outliers(client):
     data = {'file': (open('data/test2.csv', 'rb'), 'test2.csv')}
     response = client.post('/upload-csv', data=data)

@@ -13,9 +13,22 @@ def upload_csv():
 
     file = request.files['file']
 
-    if file.filename.endswith('.csv'):
+    # Returns a 400 message if no file is uploaded.
+    if not file or file.filename == '':
+        return jsonify({'Error': 'No selected file'}), 400
+
+    # Returns a 400 message if a file other than .CSV is uploaded.
+    if not file.filename.endswith('.csv'):
+        return jsonify({'Error': 'Invalid file format'}), 400
+    else:
         # Reads CSV file and converts it into DataFrame.
         df = process_csv(file)
+         # Returns a 400 message if CSV file is empty.
+        if df.empty:
+            return jsonify({'Error': 'Empty CSV file'}), 400
+        # Returns a 400 message if CSV file lacks required columns.
+        if set(df.columns) != {'timestamp', 'value', 'category'}:
+            return jsonify({'Error': 'Missing required columns'}), 400
         # Infers SQL data types from DataFrame.
         dtypes = infer_data_types(df)
         # Detects outliers using Z-score and adds Z-score column to DF.
@@ -33,7 +46,3 @@ def upload_csv():
             return jsonify({'Message': 'File successfully uploaded'}), 200
         else:
             return jsonify({'Message': 'File not uploaded - Outliers'}), 400
-
-    else:
-        # Returns a 400 message if a file other than .CSV is uploaded.
-        return jsonify({'Error': 'Invalid file format'}), 400

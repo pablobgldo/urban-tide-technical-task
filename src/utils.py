@@ -5,12 +5,12 @@ import pandas as pd
 def process_csv(file_path):
     try:
         df = pd.read_csv(file_path)
-        # Converts 'timestamp' column in Dataframe to datetime object.
-        # Not dynamic as code only works if there's a column 'timestamp'.
-        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        # Checks if 'timestamp' column exists and converts if present
+        if 'timestamp' in df.columns:
+            df['timestamp'] = pd.to_datetime(df['timestamp'])
         return df
-    except Exception as e:
-        raise ValueError(f"Error processing CSV file: {e}")
+    except Exception:
+        return pd.DataFrame()
 
 
 # Takes DataFrame and returns dict with column (key) and SQL data type (value).
