@@ -12,8 +12,7 @@ Docker: Containerisation of the application and database.
 ## Setup Instructions
 1. Clone this repository to your local machine.
 2. Ensure that Docker is installed on your system.
-3. Build/run the containers by navigating into the project directory and running ```docker-compose up --build``` to build/start the containers.
-
+3. Build and start the containers by navigating into the project directory and running ```docker-compose up --build```.
 ## Using the application
 To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools like Postman or Insomnia. To verify that data has been inserted into the PostgreSQL database inside the Docker container, you can run ```docker exec -it [your_postgres_container_name] bash``` in the CLI. You can find more details on Docker containers using ```docker ps```.
 
