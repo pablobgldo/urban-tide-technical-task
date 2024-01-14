@@ -1,5 +1,6 @@
 venv/
 src/__pycache__
 test/__pycache__
+.pytest_cache/
 example.sql
 example.txt

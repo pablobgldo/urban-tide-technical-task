@@ -3,12 +3,14 @@ import os
 
 
 # Connects to default Postgres database 'postgres'.
+# Wth default values locally or with environment variables if running from Docker.
 def get_conn():
     return Connection(
-        host='postgres',
-        database='postgres',
-        user=os.getenv('POSTGRES_USER', 'postgres'),
-        password=os.getenv('POSTGRES_PASSWORD', 'postgres'))
+        host=os.getenv('DB_HOST', 'localhost'),
+        database=os.getenv('DB_NAME', 'postgres'),
+        user=os.getenv('DB_USER', 'postgres'),
+        password=os.getenv('DB_PASSWORD', 'postgres')
+    )
 
 
 # Creates table with column names and types (if it does not exist).

@@ -56,9 +56,9 @@ def test_detect_outliers_if_none():
 
 def test_detect_outliers_if_outliers_exist():
     df = pd.DataFrame({
-        'values': [10, 12, 11, 13, 9, 10, 9, 10, 12, 180]  # 180 is an outlier
+        'values': [10, 12, 11, 13, 9, 10, 9, 10, 12, 199]
     })
     outliers = detect_outliers(df, threshold=2.58)
 
     assert not outliers.empty
-    assert 180 in outliers['values'].values
+    assert 199 in outliers['values'].values

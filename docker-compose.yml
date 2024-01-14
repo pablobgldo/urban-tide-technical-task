@@ -3,9 +3,9 @@ services:
   postgres:
     image: postgres:16.0
     environment:
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
   myapp:
@@ -14,3 +14,8 @@ services:
       - "5000:5000"
     depends_on:
       - postgres
+    environment:
+      DB_HOST: postgres
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
