@@ -22,7 +22,7 @@ To verify that the data generated from test1.csv has been inserted properly into
 ## Functionality
 CSV Upload: Accepts CSV files with a specific format (timestamp, value, category).  
 Data Validation: Checks for outliers in the value field.  
-Data Insertion: Data is inserted into the database if no outliers are detected. The table structure is inferred from the CSV content.
+Data Insertion: Data is inserted into the database if no outliers are detected.
 
 ## Contact
 For any questions regarding this project, please reach out to Pablo Bravo Galindo at pablobgldo@gmail.com.
