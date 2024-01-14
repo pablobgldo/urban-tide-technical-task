@@ -27,7 +27,7 @@ docker exec -it urban-tide-technical-task-postgres-1 bash
 ```bash
 psql -U postgres
 ```  
-Once inside the containerised PostgreSQL database, run the following to display the contents of the table with the inserted data:
+Once inside the containerised PostgreSQL database, run the following to display the inserted data:
 ```sql
 SELECT * FROM test;
 ```  
