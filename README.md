@@ -20,7 +20,7 @@ To use the application, you can send a POST request with a CSV file to http://lo
 ## Functionality
 CSV Upload: Accepts CSV files with a specific format (timestamp, value, category).  
 Data Validation: Checks for outliers in the value field.  
-Data Insertion: Data is inserted into the PostgreSQL database if no outliers are detected. The table structure is inferred from the CSV content.
+Data Insertion: Data is inserted into the database if no outliers are detected. The table structure is inferred from the CSV content.
 
 ## Contact
 For any questions regarding this project, please reach out to Pablo Bravo Galindo at pablobgldo@gmail.com.
