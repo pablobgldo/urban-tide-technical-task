@@ -5,12 +5,18 @@ from src.utils import process_csv, infer_data_types, detect_outliers
 def test_process_csv():
     df = process_csv("data/test3.csv")
     expected_df = pd.DataFrame({
-        "timestamp": pd.to_datetime(["2022-01-01 00:00:00", "2022-01-01 01:00:00"]),
-        "value": [1, 2], "category": [3, 5]
+        "timestamp": pd.to_datetime([
+            "2022-01-01 00:00:00", "2022-01-01 01:00:00"
+            ]),
+        "value": [1, 2],
+        "category": [3, 5]
     })
     unexpected_df = pd.DataFrame({
-    "timestamp": pd.to_datetime(["2022-01-01 00:00:00", "2022-01-01 01:00:00"]),
-    "value": [1, 2], "category": [3, 100]
+        "timestamp": pd.to_datetime([
+            "2022-01-01 00:00:00", "2022-01-01 01:00:00"
+            ]),
+        "value": [1, 2],
+        "category": [3, 100]
     })
 
     assert df.equals(expected_df)
@@ -56,4 +62,3 @@ def test_detect_outliers_if_outliers_exist():
 
     assert not outliers.empty
     assert 180 in outliers['values'].values
-
