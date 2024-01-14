@@ -1,7 +1,7 @@
 # UrbanTide Technical Task - Data Ingestion, Processing and Insertion
 
 ## Overview
-This application consumes, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files, infers the appropriate SQL table structure, performs basic outlier detection and populates a PostgreSQL database in the case that the data passes the validation checks. The application is also dockerized for easy setup and deployment.
+This application consumes, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files, infers the appropriate SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the the data passes the validation checks. The application is also dockerized for easy setup and deployment.
 
 ## Technologies Used
 Python: Core language for the backend.  
