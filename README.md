@@ -36,7 +36,7 @@ SELECT * FROM test;
 ## Testing
 To ensure that the application works as intended, a series of tests have been provided. Follow the steps to run the tests locally:
 
-1. Virtual environment: Create and activate virtual environment running ```python -m venv venv``` and ```source venv/bin/activate```. Ensure all dependencies are installed correctly by running ``` pip install -r src/requirements.txt```.
+1. Virtual environment: Create and activate virtual environment running ```python -m venv venv``` and ```source venv/bin/activate```. Ensure all dependencies are installed correctly by running ```pip install -r src/requirements.txt```.
 2. Set the Python Path: Before running the tests, set PYTHONPATH environment variable to include the 'src' directory. This way, Python can locate all necessary modules. In the root directory of the project, run ```export PYTHONPATH=./src```.
 3. Run the tests: Use ```python -m pytest```. This will execute all test files located in the project's tests folder.
 
