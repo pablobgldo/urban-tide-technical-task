@@ -1,7 +1,7 @@
 # UrbanTide Technical Task
 
 ## Overview
-This application ingests, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files with a specific format (timestamp, value, category), infers the SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the data passes the validation checks. The application is dockerised for easy setup and deployment.
+This application ingests, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files with a specific format (timestamp, value, category), infers the SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the data passes the validation checks. The application is dockerised for easy setup and deployment. In line with best development practices, the code is PEP 8 compliant, verified using Flake8 to ensure high standards of code quality.
 
 ## Technologies Used
 * **Python**: Core language for the backend.  
@@ -34,10 +34,10 @@ SELECT * FROM test;
 ```
 
 ## Testing
-To ensure that the application works as intended, a series of tests have been provided. Follow the steps to run the tests locally:
+In order to ensure that the application works as intended, a series of automated tests have been provided. You can follow these steps to run the tests locally:
 
-1. Virtual environment: Create and activate virtual environment running ```python -m venv venv``` and ```source venv/bin/activate```. Ensure all dependencies are installed correctly by running ```pip install -r src/requirements.txt```.
-2. Set the Python Path: Before running the tests, set PYTHONPATH environment variable to include the 'src' directory. This way, Python can locate all necessary modules. In the root directory of the project, run ```export PYTHONPATH=./src```.
+1. Create and activate virtual environment: Run ```python -m venv venv``` and ```source venv/bin/activate```. Make sure that all dependencies are installed correctly by running ```pip install -r src/requirements.txt```.
+2. Set the Python Path: Set the PYTHONPATH environment variable to include 'src' so that Python can locate all necessary modules. In the root directory of the project, run ```export PYTHONPATH=./src```.
 3. Run the tests: Use ```python -m pytest```. This will execute all test files located in the project's tests folder.
 
 ## Contact
