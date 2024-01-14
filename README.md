@@ -31,7 +31,22 @@ psql -U postgres
 Once inside the containerised PostgreSQL database, run the following to display the inserted data:
 ```sql
 SELECT * FROM test;
+```
+
+## Testing
+To ensure the functionality of this application, a series of automated tests have been provided. Follow the following steps to run the tests:
+
+1. Set the Python Path:
+Before running the tests, set the PYTHONPATH environment variable to include the 'src' directory. This way, Python can locate all necessary modules. In the root directory of the project, run the following command:
+```bash
+export PYTHONPATH=./src
 ```  
+2. Run the tests:
+The tests are written using Pytest. To run all tests, use the following command:
+```bash
+python -m pytest
+```  
+This will execute all test files located in the project's tests folder.
 
 ## Contact
 For any questions regarding this project, please reach out to Pablo Bravo Galindo at pablobgldo@gmail.com.
