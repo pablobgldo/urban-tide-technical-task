@@ -3,7 +3,7 @@ import os
 
 
 # Connects to default Postgres database 'postgres'.
-# With default values locally or with environment variables if running from Docker.
+# With default values locally or environment variables if running from Docker.
 def get_conn():
     return Connection(
         host=os.getenv('DB_HOST', 'localhost'),
