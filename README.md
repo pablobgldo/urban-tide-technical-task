@@ -36,8 +36,8 @@ SELECT * FROM test;
 ## Testing
 To ensure the functionality of this application, a series of automated tests have been provided. Follow the following steps to run the tests:
 
-1. Set the Python Path: Before running the tests, set PYTHONPATH to include the 'src' directory. This way, Python can locate all necessary modules. In the root directory of the project, run the following command:```export PYTHONPATH=./src```  
-2. Run the tests with Pytest: To do so, use the following command: ```python -m pytest``` This will execute all test files located in the project's tests folder.
+1. Set the Python Path: Before running the tests, set PYTHONPATH to include the 'src' directory. This way, Python can locate all necessary modules. In the root directory of the project, run ```export PYTHONPATH=./src```.
+2. Run the tests: Use ```python -m pytest```. This will execute all test files located in the project's tests folder.
 
 ## Contact
 For any questions regarding this project, please reach out to Pablo Bravo Galindo at pablobgldo@gmail.com.
