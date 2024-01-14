@@ -18,8 +18,8 @@ Docker: Containerisation of the application and database.
 To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools like Postman or Insomnia. To verify that the data has been inserted into the containerised database, you can run ```docker exec -it [postgres_container_name] bash``` in the CLI. You can find more details on containers using ```docker ps```.
 
 ## Functionality
-CSV Upload: Accepts CSV files with a specific format (timestamp, value, category).
-Data Validation: Checks for outliers in the value field.
+CSV Upload: Accepts CSV files with a specific format (timestamp, value, category).  
+Data Validation: Checks for outliers in the value field.  
 Data Insertion: If no outliers are detected, the data is inserted into the PostgreSQL database. The structure of the table is inferred from the CSV content.
 
 ## Contact
