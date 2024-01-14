@@ -1,7 +1,7 @@
 # UrbanTide Technical Task
 
 ## Overview
-This application consumes, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files, infers the appropriate SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the the data passes the validation checks. The application is also dockerized for easy setup and deployment.
+This application consumes, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files with a specific format (timestamp, value, category), infers the appropriate SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the the data passes the validation checks. The application is also dockerized for easy setup and deployment.
 
 ## Technologies Used
 Python: Core language for the backend.  
@@ -18,11 +18,6 @@ Docker: Containerisation of the application and database.
 To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools like Insomnia or Postman. If you decide to use Insomnia like I did, make sure to use 'Multipart form' with an entry with 'file' as name and the CSV file as value. You can test the application by using the CSV files found in the Data folder. If you upload test2.csv, you should get an error message as the file contains an outlier value of 100. If you upload test1.csv, you should receive a 200 OK success message. If the file uploaded is not .CSV, you should get an error message saying 'Invalid file format'.
 
 To verify that the data generated from test1.csv has been inserted properly into the containerised SQL database, you can run the following commands: ```docker exec -it urban-tide-technical-task-postgres-1 bash```, ```psql -U postgres``` and ```SELECT * FROM test```. This should display the contents of the table with the inserted data.
-
-## Functionality
-CSV Upload: Accepts CSV files with a specific format (timestamp, value, category).  
-Data Validation: Checks for outliers in the value field.  
-Data Insertion: Data is inserted into the database if no outliers are detected.
 
 ## Contact
 For any questions regarding this project, please reach out to Pablo Bravo Galindo at pablobgldo@gmail.com.
