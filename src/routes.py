@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from src.utils import process_csv, infer_data_types, detect_outliers #Remove src. if it doesn't work properly
-from src.db import get_conn, create_table, insert_data, close_conn #Remove src. if it doesn't work properly
+from utils import process_csv, infer_data_types, detect_outliers #Remove src. if it doesn't work properly
+from db import get_conn, create_table, insert_data, close_conn #Remove src. if it doesn't work properly
 
 app = Flask(__name__)
 
