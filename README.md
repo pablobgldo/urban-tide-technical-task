@@ -1,7 +1,7 @@
 # UrbanTide Technical Task
 
 ## Overview
-This application ingests, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files with a specific format (timestamp, value, category), infers the SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the data passes the validation checks. The application is dockerised for easy setup and deployment. In line with best practices, the code is PEP 8 compliant, verified using Flake8, to ensure high standards of code quality.
+This application ingests, validates and inserts data into a containerised SQL database. It involves a Flask-based web API that processes data from CSV files with a specific format (timestamp, value, category), infers the SQL table structure, performs basic outlier detection and populates a PostgreSQL database if the data passes the validation checks. The application is dockerised for easy setup and deployment. In line with best Python development practices, the code is PEP 8 compliant, verified using Flake8, to ensure high standards of code quality.
 
 ## Technologies Used
 * **Python**: Core language for the backend.  
