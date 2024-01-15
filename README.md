@@ -21,7 +21,7 @@ docker-compose up --build
 ## Using the application
 To use the application, you can send a POST request with a CSV file to http://localhost:5000/upload-csv once the Docker containers are running. This can be done using tools such as Insomnia or Postman. If you decide to use Insomnia like I did, make sure you select the option 'Multipart' with 'file' as name and the CSV file as value. Alternatively, on Postman, under Body, make sure you select 'form-data' and create a new key named 'file' with the CSV file as value. You can test the application by using the test1.csv and test2.csv found in the Data folder. 
 
-If you upload test1.csv, you should get a 200 OK message. If you upload test2.csv, you should get an error message - the file contains an outlier value of 100. If the file uploaded is not .CSV, empty, missing required columns or if no file at all is uploaded, you should see appropriate error messages. Note: The other CSV files in the Data folder have been created merely for testing purposes. To verify that the data generated from test1.csv has been inserted properly into the containerised database, you can run the following commands:
+If you upload test1.csv, you should get a 200 OK message. If you upload test2.csv, you should get an error message as the file contains an outlier value of 100. If the file uploaded is not .CSV, empty, missing required columns or if no file at all is uploaded, you should see appropriate error messages. Note: The other CSV files in the Data folder have been created merely for testing purposes. To verify that the data generated from test1.csv has been inserted properly into the containerised database, you can run the following commands:
 ```bash
 docker exec -it urban-tide-technical-task-postgres-1 bash
 ``` 
@@ -41,7 +41,7 @@ In order to ensure that the application works as intended, a series of automated
 3. Run the tests: Use ```python -m pytest```. This will execute all test files located in the project's tests folder.
 
 ## Challenges
-Throughout the development of this project, I encountered some of the following challenges:
+Throughout the development of this project, I encountered the following challenges:
 
 * **Outlier Detection**: Choosing an effective method for detecting outliers required revisiting my Statistics notes from my master's, especially the Z-score. Even after settling on a method, adjusting the detection threshold (from 3 to 2.58) was necessary in order to correctly identify the outlier in test2.csv.
 * **Mastering Docker**: Understanding the concept of Docker containers as well as learning how to use them was slightly challenging at first. After some trial and error, I managed to understand that the data inserted into a Dockerised database via a POST request will not be found in my local PostgreSQL database as they are two different locations.
