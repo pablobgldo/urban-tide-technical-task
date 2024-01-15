@@ -40,5 +40,14 @@ In order to ensure that the application works as intended, a series of automated
 2. Set the Python Path: Set the PYTHONPATH environment variable to include 'src' so that Python can locate all necessary modules. In the root directory of the project, run ```export PYTHONPATH=./src```.
 3. Run the tests: Use ```python -m pytest```. This will execute all test files located in the project's tests folder.
 
+## Challenges
+Throughout the development of this project, I encountered the following challenges:
+
+* **Outlier Detection**: Selecting an effective method for detecting outliers required revisiting my Statistics notes, particularly the Z-score, from my master's. Even after settling on a method, adjusting the detection threshold (from 3 to 2.58) was essential in order to correctly identify the outlier in test2.csv.
+* * **Mastering Docker**: Understanding the concept of Docker containers as well as learning how to use them was slightly challenging at first. After some trial and error, I finally understood that the data inserted in a Dockerised database via a POST request cannot be found in the local PostgreSQL database as they are two different locations.
+* **Database Connections**: At first, I assumed that default settings would be enough for database connections. However, I soon realised that I would need to do more if I wanted to easily transition between local and Dockerised environments. Incorporating environment variables in the docker-compose.yml file helped me achieve this.
+* **Port 5000 on Macs**:  I ran into a few issues at the start as port 5000 was occupied by Airplay on my Mac and my application could not run properly. I considered changing the application’s port but eventually decided to add a note to the repository advising macOS users to deactivate Airplay.
+* **Testing the /upload-csv Route**: Developing comprehensive tests for the Flask API was a long process as I had to both consider all the possible cases/errors and familiarise myself with the syntax required to test clients. After reviewing the Flask documentation and undertaking some independent research, I was able to built a robustly tested application.  
+
 ## Contact
 For any questions regarding this project, please reach out to Pablo Bravo Galindo at pablobgldo@gmail.com.
